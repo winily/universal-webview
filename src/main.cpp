@@ -14,7 +14,8 @@ int main() {
   config.height = 750;
   auto app = Application();
   Window window(config, app);
-  window.open("http://localhost:3000/");
+  // window.open("http://localhost:3000/");
+  window.open("uwfile://native/index.html");
   // window.open("https://www.zhihu.com");
   return 0;
 }

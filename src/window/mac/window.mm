@@ -3,12 +3,14 @@
 #import <CoreServices/CoreServices.h>
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
+#include <iostream>
 #import <memory>
 #import <objc/objc-runtime.h>
 #include <string>
 
 #import "message_handler.h"
 #import "platform.hpp"
+#import "scheme_handler.h"
 
 #include "../../sys/sys.hpp"
 #include "../window.hpp"
@@ -41,9 +43,15 @@ Platform::Platform(WindowConfig &config, Application &app)
 void Platform::load(std::string url) {
   @autoreleasepool {
     NSString *nsurl = [NSString stringWithUTF8String:url.c_str()];
-    NSURLRequest *request =
-        [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:nsurl]];
-    [_nswebview loadRequest:request];
+    NSURL *nurl = [NSURL URLWithString:nsurl];
+    NSString *scheme = nurl.scheme.lowercaseString;
+
+    std::cout << "isfile" << [scheme UTF8String] << std::endl;
+
+    // NSURLRequest *request =
+    //     [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:nurl]];
+    // [_nswebview loadRequest:request];
+    [_nswebview loadRequest:[NSURLRequest requestWithURL:nurl]];
   }
 }
 
@@ -69,7 +77,13 @@ void Platform::initWebview() {
     // NSRect screenSize = NSScreen.mainScreen.frame;
     NSRect targetRect =
         CGRectMake(0, 0, this->_config.width, this->_config.height);
+    auto schemeHandler = [[SchemeHandler alloc] init];
+
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
+
+    // 添加自定义类型请求拦截
+    [config setURLSchemeHandler:schemeHandler forURLScheme:@"uwfile"];
+
     WKUserContentController *userContentController =
         [[WKUserContentController alloc] init];
     config.userContentController = userContentController;

@@ -16,13 +16,31 @@ universal-webview（接下来简称 UW）
 
 - WebView
 - Clipboard
+- 资源本地化
+  > 自定义了协议头，让制定写法的 URL 被内部代码拦截，访问到本地资源
+  >
+  > 以下例子为访问到本地的根目录是代码目录下的 resource
+  > uwfile 是协议名，native 是 host 名 uwfile://native 后面才是真正的 URI
+  >
+  > ```html
+  > <script src="uwfile://native/static/js/main.be3b70e5.js" />
+  > ```
+  >
+  > 默认协议是由 window.open 传入的指定，比如
+  >
+  > ```C++
+  > window.open('uwfile://native/index.html')
+  > ```
+  >
+  > 那么默认路径就是 uwfile://native，如果写相对路径
+  > 就都会走 uwfile://native
+  > 除非写绝对路径例如 https://www.baidu.com
 
 ## TODO
 
 #### MacOS
 
 - fs
-- 资源本地化 <a href="https://blog.csdn.net/LOLITA0164/article/details/78889986">refer</a>
 
 #### Windows
 

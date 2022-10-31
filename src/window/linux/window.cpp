@@ -6,4 +6,4 @@ Window::Window(WindowConfig &config, Application &app)
   _platform = std::make_unique<Platform>(config, app);
   this->init();
 };
-void Window::init() { std::cout << "windows init function" << std::endl; }
+void Window::init() { std::cout << "linux init function" << std::endl; }
