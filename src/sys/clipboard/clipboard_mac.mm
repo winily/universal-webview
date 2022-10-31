@@ -1,6 +1,9 @@
 #include "./clipboard.hpp"
 
 #include <cstdint>
+#include <iostream>
+#include <ostream>
+#include <string>
 
 #import <AppKit/AppKit.h>
 #import <CoreServices/CoreServices.h>
@@ -21,17 +24,23 @@ Buffer Read(std::string format) {
   return Buffer{.bytes = bytes, .length = length};
 }
 // 写入剪贴板
-bool Write(std::string format_str, Buffer buffer) {
+bool Write(std::string format_str, std::string buffer) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
   NSString *format = [NSString stringWithUTF8String:format_str.c_str()];
+  NSString *data = [NSString stringWithUTF8String:buffer.c_str()];
 
-  uint8_t *buf = buffer.bytes;
-  size_t length = buffer.length;
+  std::cout << "Mac::Clipboard:: fromat" << [format UTF8String] << std::endl;
 
-  NSData *data = [NSData dataWithBytes:buf length:(NSUInteger)length];
-  [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
-  BOOL success = [NSPasteboard.generalPasteboard setData:data forType:format];
+  // uint8_t *buf = buffer.bytes;
+  // size_t length = buffer.length;
+  // NSData *data = [NSPasteboard.generalPasteboard
+  //     dataForType:[NSString stringWithUTF8String:buffer.c_str()]];
+
+  // NSData *data = [NSData dataWithBytes:buf length:length];
+  // [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
+  Clear();
+  BOOL success = [NSPasteboard.generalPasteboard setString:data forType:format];
   [pool drain];
   return success;
 }

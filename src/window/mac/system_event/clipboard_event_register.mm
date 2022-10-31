@@ -1,5 +1,7 @@
+#include <AppKit/AppKit.h>
 #include <Foundation/Foundation.h>
 #include <_types/_uint32_t.h>
+#include <_types/_uint8_t.h>
 
 #include "../../../sys/clipboard/clipboard.hpp"
 #include "clipboard_event_register.h"
@@ -27,12 +29,12 @@ NSDictionary *clipboard_read(NSDictionary *data) {
 
 NSDictionary *clipboard_write(NSDictionary *data) {
   std::cout << "调用剪贴板 clipboard_write" << std::endl;
-  auto byte = (uint8_t *)[data[@"data"] bytes];
   auto format = [data[@"format"] UTF8String];
-  Buffer buffer{};
-  buffer.bytes = byte;
-  buffer.length = sizeof(byte) / 2;
-  Sys::Clipboard::Write(format, buffer);
+  auto *clipdord_data = [data[@"data"] UTF8String];
+  // Buffer buffer{};
+  // buffer.bytes = (uint8_t *)clipdord_data.bytes;
+  // buffer.length = (uint32_t)clipdord_data.length;
+  Sys::Clipboard::Write(format, clipdord_data);
   return nullptr;
 }
 

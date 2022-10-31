@@ -10,6 +10,6 @@ void Clear();
 // 读取剪贴板
 Buffer Read(std::string format);
 // 写入剪贴板
-bool Write(std::string format_str, Buffer buffer);
+bool Write(std::string format_str, std::string buffer);
 } // namespace Clipboard
 } // namespace Sys
