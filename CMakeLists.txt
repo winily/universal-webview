@@ -28,8 +28,9 @@ add_subdirectory(src)
 
 
 # 复制 web 资源文件到 build 目录
-# file(GLOB resource "${CMAKE_CURRENT_LIST_DIR}/resource/*")
-# file(MAKE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build/resource)
-# file(COPY ${resource} DEFINITIONS ${CMAKE_CURRENT_LIST_DIR}/build/resource)
-
 execute_process(COMMAND cp -r ${CMAKE_CURRENT_LIST_DIR}/resource ${CMAKE_CURRENT_LIST_DIR}/build/resource)
+
+
+# enable testing and define tests
+enable_testing()
+add_subdirectory(test)

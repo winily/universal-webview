@@ -1,7 +1,6 @@
 #import "scheme_handler.h"
 #include <Foundation/Foundation.h>
 #include <filesystem>
-#include <iostream>
 
 auto mathContentType(NSString *extension) {
   NSDictionary *contentTypeTable = @{
@@ -39,7 +38,6 @@ auto mathContentType(NSString *extension) {
 
     auto filePath = [baseUrl stringByAppendingString:urlPath];
     auto contentType = mathContentType([filePath pathExtension]);
-
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
          initWithURL:urlSchemeTask.request.URL

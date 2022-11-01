@@ -1,14 +1,16 @@
 # universal-webview
 
-universal-webview（接下来简称 UW）
-是一款基于系统 webview 的图形化界面开发框架灵感来源
-<a href='https://tauri.app/'>Tauri</a>
-与它类似，但 Tauri 是基于 rust 开发，UW 是基于 C++ 开发，
-因为没有依赖 chromium 所以 UW 要比 Electron 要轻量很多。
-不过对应的会产生一点问题就是每个平台的操作系统提供的 WebView
-都是不同的标准，在 Web API 上可能会有细微的区别。
+<a href="./README-CN.ME">[中文]</a>|[English]
 
-`tip: 因为我是个人开发者可能支撑度不会很高， 目前仅为实现自己需求的功能为主，如果需要去适配更多功能欢迎 PR 或者提出 issues`
+universal-webview (hereinafter referred to as UW)
+It is a source of inspiration for a graphical interface development framework based on system webview
+<a href='https://tauri.app/'>Tauri</a>
+Similar to it, but Tauri is developed based on rust, UW is developed based on C++,
+Because there is no dependence on chromium, UW is much lighter than Electron.
+However, the corresponding problem is that the WebView provided by the operating system of each platform
+All are different standards and may have subtle differences on Web APIs.
+
+`tip: Because I am a personal developer, the support level may not be very high. At present, I mainly only realize the functions I need. If you need to adapt more functions, please PR or raise issues`
 
 ## Support
 
@@ -16,35 +18,37 @@ universal-webview（接下来简称 UW）
 
 - WebView
 - Clipboard
-- 资源本地化
-  > 自定义了协议头，让制定写法的 URL 被内部代码拦截，访问到本地资源
+- Resource localization
+  > Customized the protocol header, so that the URL of the formulation can be intercepted by the internal code, and the local resources can be accessed
   >
-  > 以下例子为访问到本地的根目录是代码目录下的 resource
-  > uwfile 是协议名，native 是 host 名 uwfile://native 后面才是真正的 URI
+  > The following example is to access the local root directory is the resource in the code directory
+  > uwfile is the protocol name, native is the host name uwfile://native is followed by the real URI
   >
   > ```html
   > <script src="uwfile://native/static/js/main.be3b70e5.js" />
   > ```
   >
-  > 默认协议是由 window.open 传入的指定，比如
+  > The default protocol is specified by window.open, such as
   >
   > ```C++
   > window.open('uwfile://native/index.html')
   > ```
   >
-  > 那么默认路径就是 uwfile://native，如果写相对路径
-  > 就都会走 uwfile://native
-  > 除非写绝对路径例如 https://www.baidu.com
+  > Then the default path is uwfile://native, if you write a relative path
+  > will go to uwfile://native
+  > unless write absolute path like https://www.baidu.com
 
 ## TODO
 
 #### MacOS
 
 - fs
+- menu
 
 #### Windows
 
 - WebView2
 - Clipboard
 - fs
-- 资源本地化
+- Resource localization
+- menu

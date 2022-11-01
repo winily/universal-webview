@@ -1,4 +1,5 @@
-add_executable(automata main.cpp)
+# add_executable(universal-webview main.cpp)
+add_library(universal-webview main.cpp)
 
 add_subdirectory(app)
 add_subdirectory(container)
@@ -6,7 +7,7 @@ add_subdirectory(sys)
 add_subdirectory(util)
 add_subdirectory(window)
 
-target_link_libraries(automata
+target_link_libraries(universal-webview
   PRIVATE
     app
     container

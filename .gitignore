@@ -12,6 +12,7 @@ build
 dist
 dist-ssr
 .cache
+Testing
 *.local
 
 # Editor directories and files
