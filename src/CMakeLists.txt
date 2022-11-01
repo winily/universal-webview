@@ -1,5 +1,4 @@
 add_library(universal-webview main.cpp)
-# add_executable(universal-webview main.cpp)
 
 add_subdirectory(app)
 add_subdirectory(container)
@@ -17,3 +16,7 @@ target_link_libraries(universal-webview
 
     yaml-cpp
   )
+
+add_executable(uw uw.cpp)
+
+target_link_libraries(uw universal-webview)
