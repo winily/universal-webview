@@ -1,6 +1,6 @@
 #pragma once
-#include "../../app/application.hpp"
-#include "../window_config.hpp"
+#include "../app/application.hpp"
+#include "window_config.hpp"
 class Platform {
 public:
   Platform(WindowConfig &config, Application &app)

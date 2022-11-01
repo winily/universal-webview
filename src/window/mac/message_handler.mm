@@ -1,7 +1,7 @@
 #import "message_handler.h"
 
-#include "../../util/message.hpp"
-#include "./system_event/system_event.h"
+#include "../util/message.hpp"
+#include "system_event/system_event.h"
 
 #include <iostream>
 #include <string>

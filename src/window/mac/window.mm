@@ -12,9 +12,9 @@
 #import "platform.hpp"
 #import "scheme_handler.h"
 
-#include "../../sys/sys.hpp"
-#include "../window.hpp"
-#include "../window_config.hpp"
+#include "../sys/sys.hpp"
+#include "window.hpp"
+#include "window_config.hpp"
 
 #include "iostream"
 

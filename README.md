@@ -1,6 +1,6 @@
 # universal-webview
 
-<a href="./README-CN.ME">[中文]</a>|[English]
+<a href="./README-CN.md">[中文]</a>|[English]
 
 universal-webview (hereinafter referred to as UW)
 It is a source of inspiration for a graphical interface development framework based on system webview

@@ -1,6 +1,6 @@
 # universal-webview
 
-[中文]|<a href="./README.ME">[English]</a>
+[中文]|<a href="./README.md">[English]</a>
 
 universal-webview（接下来简称 UW）
 是一款基于系统 webview 的图形化界面开发框架灵感来源

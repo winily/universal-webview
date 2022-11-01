@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 build
 dist
+lib
 dist-ssr
 .cache
 Testing

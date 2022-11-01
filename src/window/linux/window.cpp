@@ -1,4 +1,4 @@
-#include "../window.hpp"
+#include "window.hpp"
 #include "iostream"
 
 Window::Window(WindowConfig &config, Application &app)
