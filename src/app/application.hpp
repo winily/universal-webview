@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+namespace UW::App {
+
 class Application {
 public:
   Application() {
@@ -21,3 +23,4 @@ public:
 public:
   Bus::MessageBus bus;
 };
+} // namespace UW::App

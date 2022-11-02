@@ -8,7 +8,7 @@
 #include "system_event.h"
 
 #include <iostream>
-
+namespace UW::Window {
 NSDictionary *clipboard_clear() {
   std::cout << "调用剪贴板 clipboard_clear" << std::endl;
   Sys::Clipboard::Clear();
@@ -53,5 +53,4 @@ NSDictionary *clipboardEventSelector(SystemEvent event) {
 
   return nullptr;
 }
-
-// REGISTER_SYSTEM_EVENT("clipboard::clear", clipboard_clear);
+}

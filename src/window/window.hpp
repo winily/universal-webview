@@ -12,9 +12,10 @@
 #include "mac/platform.hpp"
 #endif
 
+namespace UW::Window {
 class Window {
 public:
-  Window(WindowConfig &config, Application &app);
+  Window(WindowConfig &config, App::Application &app);
 
   void open(std::string url) {
     this->_platform->load(url);
@@ -22,7 +23,7 @@ public:
   }
 
 public:
-  Application &app;
+  App::Application &app;
 
 private:
   WindowConfig &_config;
@@ -30,3 +31,4 @@ private:
   // 初始化窗口样式
   void init();
 };
+} // namespace UW::Window

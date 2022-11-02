@@ -12,6 +12,7 @@
 
 // clipboardEventRegister(SYSTEM_EVENT_TABLE);
 
+namespace UW::Window {
 NSDictionary *selector(SystemEvent event) {
 
   NSDictionary *result = @{};
@@ -33,4 +34,5 @@ NSDictionary *process_event(NSDictionary *body) {
   event.data = body[@"data"];
   std::cout << "进入一个事件，准备选择api运行 key:" << event.key << std::endl;
   return selector(event);
+}
 }

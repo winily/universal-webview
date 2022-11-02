@@ -1,7 +1,8 @@
 #pragma once
 
 #include "message.hpp"
-namespace Bus {
+
+namespace UW::Bus {
 
 class MessageHandler {
 public:
@@ -13,4 +14,4 @@ public:
 private:
   std::string _key;
 };
-} // namespace Bus
+} // namespace UW::Bus

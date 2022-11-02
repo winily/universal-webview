@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace Bus {
+namespace UW::Bus {
 
 enum MessageType { EMPTY, STRING, BUFFER };
 
@@ -24,4 +24,4 @@ private:
   Buffer _buffer_val;
   std::string _string_val;
 };
-} // namespace Bus
+} // namespace UW::Bus

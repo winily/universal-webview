@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+
+namespace UW::Window {
 struct WindowConfig {
   std::string title;
   std::string icon_path;
@@ -15,3 +17,4 @@ struct WindowConfig {
 
   bool develop{true};
 };
+} // namespace UW::Window

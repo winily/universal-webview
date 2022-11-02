@@ -3,9 +3,10 @@
 #include "../../app/application.hpp"
 #include "../window_config.hpp"
 
+namespace UW::Window {
 class Platform {
 public:
-  Platform(WindowConfig &config, Application &app);
+  Platform(WindowConfig &config, App::Application &app);
 
   // 稀构函数，代理 Objective-C 的内存回收
   // ~Platform() { [_pool drain]; }
@@ -17,7 +18,7 @@ public:
   void evaluateJavaScript();
 
 public:
-  Application &app;
+  App::Application &app;
 
 private:
   void initWebview();
@@ -29,3 +30,4 @@ private:
 
 // class Platform;
 // void Platform::run();
+} // namespace UW::Window

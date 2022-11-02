@@ -9,9 +9,7 @@
 #import <CoreServices/CoreServices.h>
 #import <Foundation/Foundation.h>
 
-namespace Sys {
-namespace Clipboard {
-
+namespace UW::Sys::Clipboard {
 void Clear() { [NSPasteboard.generalPasteboard clearContents]; }
 // 读取剪贴板
 Buffer Read(std::string format) {
@@ -43,6 +41,5 @@ bool Write(std::string format_str, std::string buffer) {
   BOOL success = [NSPasteboard.generalPasteboard setString:data forType:format];
   [pool drain];
   return success;
-}
 }
 }

@@ -1,0 +1,19 @@
+{
+  "menu": {
+    "navigation": [
+      {
+        "name": "uw",
+        "children": [
+          {
+            "key": "uw-about",
+            "name": "about"
+          },
+          {
+            "key": "exit",
+            "name": "退出 UW"
+          }
+        ]
+      }
+    ]
+  }
+}

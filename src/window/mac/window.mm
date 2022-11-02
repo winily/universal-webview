@@ -18,6 +18,8 @@
 
 #include "iostream"
 
+namespace UW::Window {
+
 NSWindow *_nswindow;
 WKWebView *_nswebview;
 
@@ -28,7 +30,7 @@ NSString *toNSString(std::string str) {
 // ------------ WKScriptMessageHandler end ------------
 
 // 构造函数
-Platform::Platform(WindowConfig &config, Application &app)
+Platform::Platform(WindowConfig &config, App::Application &app)
     : app(app), _config(config) {
   @autoreleasepool {
     // 共享 application 实例，后续使用 NSApp 调用
@@ -156,7 +158,7 @@ void Platform::initWindow() {
 }
 
 // ----------- window 通用接口具体实现 -----------
-Window::Window(WindowConfig &config, Application &app)
+Window::Window(WindowConfig &config, App::Application &app)
     : app(app), _config(config) {
   _platform = std::make_unique<Platform>(config, app);
   this->init();
@@ -165,4 +167,5 @@ Window::Window(WindowConfig &config, Application &app)
 void Window::init() {
   std::cout << "mac init function" << std::endl;
   this->_platform->init();
+}
 }

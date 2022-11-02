@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <string>
-
 @implementation MessageHandler
 - (void)initEvent {
 
@@ -39,7 +38,7 @@
   // 暴露系统事件通信口给 js
   if ([message.name isEqualToString:@SYSTEM_EVENT]) {
     std::cout << "调用了系统事件通信口" << std::endl;
-    auto system_result = process_event(body);
+    auto system_result = UW::Window::process_event(body);
     std::cout << "系统事件通信口调用完毕" << std::endl;
     return reply(system_result, nil);
   }
@@ -50,7 +49,7 @@
   if ([message.name isEqualToString:@"clipboard::read"]) {
 
     std::cout << "clipboard::read" << std::endl;
-    Bus::Message msg("public.utf8-plain-text");
+    UW::Bus::Message msg("public.utf8-plain-text");
     // Bus::Message msg("你猜猜这是什么！");
     auto result = self._platform->app.bus.emit(name, msg);
     std::cout << "clipboard::read 事件执行结束" << std::endl;

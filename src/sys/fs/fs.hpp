@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 
-namespace Sys {
-namespace Fs {
+namespace UW::Sys::Fs {
 void read() { std::cout << "hello fs" << std::endl; };
-} // namespace Fs
-} // namespace Sys
+} // namespace UW::Sys::Fs

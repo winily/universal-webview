@@ -2,8 +2,8 @@ add_library(sys "")
 
 
 target_sources(sys
-  PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/sys.cpp
+  # PRIVATE
+  #   ${CMAKE_CURRENT_LIST_DIR}/sys.cpp
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/sys.hpp
 )

@@ -9,7 +9,7 @@
 #include "message.hpp"
 #include "messageHandler.hpp"
 
-namespace Bus {
+namespace UW::Bus {
 
 typedef Message (*handler)(Message);
 
@@ -29,4 +29,4 @@ public:
 private:
   std::map<std::string, handler> _handler_vector;
 };
-} // namespace Bus
+} // namespace UW::Bus

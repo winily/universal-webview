@@ -11,7 +11,7 @@
 // WKScriptMessageHandlerWithReply
 // @interface MessageHandler : NSObject <WKScriptMessageHandler>
 @interface MessageHandler : NSObject <WKScriptMessageHandlerWithReply>
-@property(nonatomic) Platform *_platform;
+@property(nonatomic) UW::Window::Platform *_platform;
 @property(nonatomic, assign) WKWebView *_nswebview;
 - (void)initEvent;
 @end

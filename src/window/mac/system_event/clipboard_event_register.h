@@ -9,6 +9,6 @@
 #include <map>
 #include <string>
 
-// NSDictionary *clipboard_clear(NSDictionary *data);
-
+namespace UW::Window {
 NSDictionary *clipboardEventSelector(SystemEvent event);
+}
