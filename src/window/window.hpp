@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../app/application.hpp"
-#include "window_config.hpp"
+#include "../config/config.hpp"
 // #include <memory>
 
 #if defined(__linux__)
@@ -15,7 +15,7 @@
 namespace UW::Window {
 class Window {
 public:
-  Window(WindowConfig &config, App::Application &app);
+  Window(Config::Config &config, App::Application &app);
 
   void open(std::string url) {
     this->_platform->load(url);
@@ -26,7 +26,7 @@ public:
   App::Application &app;
 
 private:
-  WindowConfig &_config;
+  Config::Config &_config;
   std::unique_ptr<Platform> _platform = nullptr;
   // 初始化窗口样式
   void init();

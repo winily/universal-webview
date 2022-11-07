@@ -7,13 +7,13 @@ endif()
 
 message(STATUS ${SOUYCES_PATH})
 
+# file(GLOB SOUYCES_PATH ${CMAKE_CURRENT_LIST_DIR}/*.hpp)
 target_sources(window
   PRIVATE
     ${SOUYCES_PATH}
     ${CMAKE_CURRENT_LIST_DIR}/window.cpp
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/window.hpp
-    ${CMAKE_CURRENT_LIST_DIR}/window_config.hpp
   )
 
 target_include_directories(window

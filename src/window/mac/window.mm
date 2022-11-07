@@ -12,9 +12,9 @@
 #import "platform.hpp"
 #import "scheme_handler.h"
 
+#include "../config/config.hpp"
 #include "../sys/sys.hpp"
 #include "window.hpp"
-#include "window_config.hpp"
 
 #include "iostream"
 
@@ -30,7 +30,7 @@ NSString *toNSString(std::string str) {
 // ------------ WKScriptMessageHandler end ------------
 
 // 构造函数
-Platform::Platform(WindowConfig &config, App::Application &app)
+Platform::Platform(Config::Window &config, App::Application &app)
     : app(app), _config(config) {
   @autoreleasepool {
     // 共享 application 实例，后续使用 NSApp 调用
@@ -158,9 +158,9 @@ void Platform::initWindow() {
 }
 
 // ----------- window 通用接口具体实现 -----------
-Window::Window(WindowConfig &config, App::Application &app)
+Window::Window(Config::Config &config, App::Application &app)
     : app(app), _config(config) {
-  _platform = std::make_unique<Platform>(config, app);
+  _platform = std::make_unique<Platform>(config.window, app);
   this->init();
 };
 

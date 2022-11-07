@@ -1,12 +1,12 @@
 #pragma once
 
 #include "../../app/application.hpp"
-#include "../window_config.hpp"
+#include "../../config/config.hpp"
 
 namespace UW::Window {
 class Platform {
 public:
-  Platform(WindowConfig &config, App::Application &app);
+  Platform(Config::Window &window_config, App::Application &app);
 
   // 稀构函数，代理 Objective-C 的内存回收
   // ~Platform() { [_pool drain]; }
@@ -25,7 +25,7 @@ private:
   void initWindow();
 
 private:
-  WindowConfig &_config;
+  Config::Window &_config;
 };
 
 // class Platform;

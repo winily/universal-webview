@@ -1,7 +1,7 @@
 #include "../src/app/application.hpp"
+#include "../src/config/config.hpp"
 #include "../src/util/util.hpp"
 #include "../src/window/window.hpp"
-#include "../src/window/window_config.hpp"
 
 #include <iostream>
 
@@ -13,11 +13,11 @@ using namespace UW;
 TEST_CASE("test") {
 
   std::cout << "hello world" << std::endl;
-  Window::WindowConfig config{};
-  config.title = "第一窗口";
-  config.icon_path = "/Users/winily/Downloads/icon.png";
-  config.width = 1200;
-  config.height = 750;
+  UW::Config::Config config{};
+  config.window.title = "第一窗口";
+  config.window.icon_path = "/Users/winily/Downloads/icon.png";
+  config.window.width = 1200;
+  config.window.height = 750;
   auto app = App::Application();
   Window::Window window(config, app);
   // window.open("http://localhost:3000/");

@@ -1,8 +1,15 @@
 {
+  "window": {
+    "title": "第一窗口",
+    "icon_path": "/Users/winily/Downloads/icon.png",
+    "width": 1200,
+    "height": 750
+  },
   "menu": {
     "navigation": [
       {
         "name": "uw",
+        "key": "uw",
         "children": [
           {
             "key": "uw-about",
