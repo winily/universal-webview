@@ -14,10 +14,10 @@ TEST_CASE("test") {
 
   std::cout << "hello world" << std::endl;
   UW::Config::Config config{};
-  config.window.title = "第一窗口";
-  config.window.icon_path = "/Users/winily/Downloads/icon.png";
-  config.window.width = 1200;
-  config.window.height = 750;
+  config.window_.title_ = "第一窗口";
+  config.window_.icon_path_ = "/Users/winily/Downloads/icon.png";
+  config.window_.width_ = 1200;
+  config.window_.height_ = 750;
   auto app = App::Application();
   Window::Window window(config, app);
   // window.open("http://localhost:3000/");

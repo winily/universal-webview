@@ -5,14 +5,15 @@
 #include <optional>
 
 namespace UW::Config {
-struct Config {
+class Config {
+public:
   Config() = default;
   Config(Json::Value root) {
-    this->window = Window(root["root"]);
-    this->menu = Menu(root["menu"]);
+    window_ = Window(root["root"]);
+    menu_ = Menu(root["menu"]);
   }
 
-  Window window{};
-  Menu menu{};
+  Window window_{};
+  Menu menu_{};
 };
 } // namespace UW::Config

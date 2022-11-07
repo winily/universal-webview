@@ -4,36 +4,37 @@
 #include <string>
 
 namespace UW::Config {
-struct Window {
+class Window {
+public:
   Window() = default;
   Window(Json::Value window) {
-    title = window["title"].asString();
-    icon_path = window["icon_path"].asString();
+    title_ = window["title"].asString();
+    icon_path_ = window["icon_path"].asString();
 
-    resizable = window.get("resizable", true).asBool();
-    closable = window.get("closable", true).asBool();
-    miniaturizable = window.get("miniaturizable", true).asBool();
-    title_bar = window.get("title_bar", true).asBool();
-    develop = window.get("develop", true).asBool();
+    resizable_ = window.get("resizable", true).asBool();
+    closable_ = window.get("closable", true).asBool();
+    miniaturizable_ = window.get("miniaturizable", true).asBool();
+    title_bar_ = window.get("title_bar", true).asBool();
+    develop_ = window.get("develop", true).asBool();
 
-    x = window.get("x", 0).asDouble();
-    y = window.get("y", 0).asDouble();
-    width = window.get("width", 800).asDouble();
-    height = window.get("height", 800).asDouble();
+    x_ = window.get("x", 0).asDouble();
+    y_ = window.get("y", 0).asDouble();
+    width_ = window.get("width", 800).asDouble();
+    height_ = window.get("height", 800).asDouble();
   }
 
-  std::string title;
-  std::string icon_path;
+  std::string title_;
+  std::string icon_path_;
 
-  bool resizable{true};
-  bool closable{true};
-  bool miniaturizable{true};
-  bool title_bar{true};
-  bool develop{true};
+  bool resizable_{true};
+  bool closable_{true};
+  bool miniaturizable_{true};
+  bool title_bar_{true};
+  bool develop_{true};
 
-  double x{0};
-  double y{0};
-  double width{800};
-  double height{800};
+  double x_{0};
+  double y_{0};
+  double width_{800};
+  double height_{800};
 };
 } // namespace UW::Config

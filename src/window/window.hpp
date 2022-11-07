@@ -18,16 +18,16 @@ public:
   Window(Config::Config &config, App::Application &app);
 
   void open(std::string url) {
-    this->_platform->load(url);
-    this->_platform->run();
+    platform_->load(url);
+    platform_->run();
   }
 
 public:
-  App::Application &app;
+  App::Application &app_;
 
 private:
-  Config::Config &_config;
-  std::unique_ptr<Platform> _platform = nullptr;
+  Config::Config &config_;
+  std::unique_ptr<Platform> platform_ = nullptr;
   // 初始化窗口样式
   void init();
 };

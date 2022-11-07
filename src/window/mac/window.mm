@@ -31,7 +31,7 @@ NSString *toNSString(std::string str) {
 
 // 构造函数
 Platform::Platform(Config::Window &config, App::Application &app)
-    : app(app), _config(config) {
+    : app(app), config_(config) {
   @autoreleasepool {
     // 共享 application 实例，后续使用 NSApp 调用
     [NSApplication sharedApplication];
@@ -60,8 +60,8 @@ void Platform::load(std::string url) {
 void Platform::run() { [NSApp run]; }
 
 void Platform::init() {
-  this->initWindow();
-  this->initWebview();
+  initWindow();
+  initWebview();
   _nswindow.contentView = _nswebview;
 }
 
@@ -77,8 +77,7 @@ void Platform::evaluateJavaScript() {
 void Platform::initWebview() {
   @autoreleasepool {
     // NSRect screenSize = NSScreen.mainScreen.frame;
-    NSRect targetRect =
-        CGRectMake(0, 0, this->_config.width, this->_config.height);
+    NSRect targetRect = CGRectMake(0, 0, config_.width_, config_.height_);
     auto schemeHandler = [[SchemeHandler alloc] init];
 
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
@@ -110,7 +109,7 @@ void Platform::initWebview() {
     [_nswebview setAutoresizesSubviews:YES];
     [_nswebview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 
-    if (this->_config.develop) {
+    if (config_.develop_) {
       [_nswebview.configuration.preferences setValue:@YES
                                               forKey:@"developerExtrasEnabled"];
     }
@@ -120,8 +119,8 @@ void Platform::initWebview() {
 void Platform::initWindow() {
   @autoreleasepool {
     // Create the main window
-    NSRect rc = NSMakeRect(this->_config.x, this->_config.y,
-                           this->_config.width, this->_config.height);
+    NSRect rc =
+        NSMakeRect(config_.x_, config_.y_, config_.width_, config_.height_);
     NSUInteger uiStyle = NSWindowStyleMaskTitled | NSWindowStyleMaskResizable |
                          NSWindowStyleMaskClosable |
                          NSWindowStyleMaskMiniaturizable;
@@ -130,28 +129,28 @@ void Platform::initWindow() {
                                             styleMask:uiStyle
                                               backing:backingStoreStyle
                                                 defer:NO];
-    auto title = toNSString(this->_config.title);
+    auto title = toNSString(config_.title_);
     [_nswindow setTitle:title];
     [_nswindow makeKeyAndOrderFront:_nswindow];
     [_nswindow makeMainWindow];
     // 控制窗口样式
-    if (!this->_config.closable) {
+    if (!config_.closable_) {
       [_nswindow
           setStyleMask:[_nswindow styleMask] & ~NSWindowStyleMaskClosable];
     }
-    if (!this->_config.miniaturizable) {
+    if (!config_.miniaturizable_) {
       [_nswindow setStyleMask:[_nswindow styleMask] &
                               ~NSWindowStyleMaskMiniaturizable];
     }
-    if (!this->_config.resizable) {
+    if (!config_.resizable_) {
       [_nswindow
           setStyleMask:[_nswindow styleMask] & ~NSWindowStyleMaskResizable];
     }
-    if (!this->_config.title_bar) {
+    if (!config_.title_bar_) {
       [_nswindow setStyleMask:[_nswindow styleMask] & ~NSWindowStyleMaskTitled];
     }
     // 设置 icon
-    auto icon_path = toNSString(this->_config.icon_path);
+    auto icon_path = toNSString(config_.icon_path_);
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:icon_path];
     NSApp.applicationIconImage = image;
   }
@@ -159,13 +158,13 @@ void Platform::initWindow() {
 
 // ----------- window 通用接口具体实现 -----------
 Window::Window(Config::Config &config, App::Application &app)
-    : app(app), _config(config) {
-  _platform = std::make_unique<Platform>(config.window, app);
-  this->init();
+    : app_(app), config_(config) {
+  platform_ = std::make_unique<Platform>(config_.window_, app);
+  init();
 };
 
 void Window::init() {
   std::cout << "mac init function" << std::endl;
-  this->_platform->init();
+  platform_->init();
 }
 }

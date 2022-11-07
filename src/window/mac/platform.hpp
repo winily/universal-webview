@@ -25,7 +25,7 @@ private:
   void initWindow();
 
 private:
-  Config::Window &_config;
+  Config::Window &config_;
 };
 
 // class Platform;

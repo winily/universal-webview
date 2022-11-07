@@ -6,27 +6,29 @@
 #include <vector>
 
 namespace UW::Config {
-struct MenuItem {
+class MenuItem {
+public:
   MenuItem(Json::Value item) {
-    name = item["name"].asString();
-    key = item["key"].asString();
+    name_ = item["name"].asString();
+    key_ = item["key"].asString();
     auto childrenList = item["children"];
     for (int index = 0; index < childrenList.size(); ++index)
-      children.push_back(MenuItem(childrenList[index]));
+      children_.push_back(MenuItem(childrenList[index]));
   }
-  std::string name;
-  std::string key;
-  std::vector<MenuItem> children;
+  std::string name_;
+  std::string key_;
+  std::vector<MenuItem> children_;
 };
 
-struct Menu {
+class Menu {
+public:
   Menu() = default;
   Menu(Json::Value menu) {
     auto navigationMenuList = menu["navigation"];
     for (int index = 0; index < navigationMenuList.size(); ++index)
-      navigation.push_back(MenuItem(navigationMenuList[index]));
+      navigation_.push_back(MenuItem(navigationMenuList[index]));
   }
 
-  std::vector<MenuItem> navigation;
+  std::vector<MenuItem> navigation_;
 };
 } // namespace UW::Config
