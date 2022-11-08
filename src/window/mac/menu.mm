@@ -4,60 +4,91 @@
 #include <WebKit/WebKit.h>
 #include <iostream>
 
+@interface UWMenuItem : NSMenuItem
+@property(nonatomic, strong) NSString *key_;
+@end
+@implementation UWMenuItem
+- (void)setKey:(NSString *)key {
+  self.key_ = key;
+}
+@end
+
+@interface MenuSelector : NSObject
+@property UW::Config::Config config_;
+@end
+@implementation MenuSelector
+- (void)selector_item:(id)sender {
+  auto menuItem = ((UWMenuItem *)sender);
+  auto js = [NSString
+      stringWithFormat:@"SystemApi.eventBus.emit('menu::%@')", menuItem.key_];
+  auto _nswindow = NSApp.mainWindow;
+  auto _nswebview = NSApp.mainWindow.contentView;
+  [_nswebview evaluateJavaScript:js completionHandler:nil];
+}
+@end
+
 namespace UW::Window {
+
+void assemblyMenu(MenuSelector *menu_selector, NSMenu *nsmenu,
+                  std::vector<Config::MenuItem> menu_list) {
+  for (auto item : menu_list) {
+    auto name = [NSString stringWithUTF8String:item.name_.c_str()];
+    auto key = [NSString stringWithUTF8String:item.key_.c_str()];
+
+    // 是否有子项
+    if (item.children_.size() > 0) {
+      // 预注册一个菜单项
+      [nsmenu addItemWithTitle:name action:NULL keyEquivalent:@""];
+      // 创建菜单项
+      auto nsmenuItem = [[NSMenu alloc] initWithTitle:name];
+      assemblyMenu(menu_selector, nsmenuItem, item.children_);
+      // 装载菜单项
+      [nsmenu setSubmenu:nsmenuItem forItem:[nsmenu itemWithTitle:name]];
+    } else {
+      // 创建菜单项
+      auto nsmenuItem =
+          [[UWMenuItem alloc] initWithTitle:name
+                                     action:@selector(selector_item:)
+                              keyEquivalent:@""];
+      [nsmenuItem setTarget:menu_selector];
+      [nsmenuItem setKey:key];
+      [nsmenu addItem:nsmenuItem];
+    }
+  }
+}
+
 void Platform::initMenu() {
   // @autoreleasepool {
   Config::Menu menuConfig = config_.menu_;
+
   // auto mainMenu = [NSApp mainMenu];
-  auto mainMenu = [[NSMenu alloc] init];
+  auto navigation_bar = [[NSMenu alloc] init];
+  auto menu_selector = [[MenuSelector alloc] init];
+  assemblyMenu(menu_selector, navigation_bar, menuConfig.navigation_);
 
-  int index = 2;
-  // 初始化导航栏菜单
-  // for (Config::MenuItem item : menuConfig.navigation_) {
-  //   std::cout << "装载菜单：" << item.name_ << std::endl;
-  //   auto nsmenuItem = [[NSMenuItem alloc]
-  //       initWithTitle:[NSString stringWithUTF8String:item.name_.c_str()]
-  //              action:nil
-  //       keyEquivalent:[NSString stringWithUTF8String:item.key_.c_str()]];
-  //   // [nsmenuItem setTitle:[NSString
-  //   stringWithUTF8String:item.name_.c_str()]];
+  // for (Config::MenuItem mainMenu : menuConfig.navigation_) {
+  //   auto name = [NSString stringWithUTF8String:mainMenu.name_.c_str()];
+  //   auto key = [NSString stringWithUTF8String:mainMenu.key_.c_str()];
+  //   // 注册一个菜单项
+  //   [navigation_bar addItemWithTitle:name action:NULL keyEquivalent:@""];
 
-  //   auto subMenu = [[NSMenu alloc]
-  //       initWithTitle:[NSString stringWithUTF8String:item.name_.c_str()]];
-  //   for (Config::MenuItem subItem : item.children_) {
-  //     [subMenu
-  //         addItemWithTitle:[NSString
-  //         stringWithUTF8String:subItem.name_.c_str()]
-  //                   action:nil
-  //            keyEquivalent:[NSString
-  //                              stringWithUTF8String:subItem.key_.c_str()]];
+  //   auto nsmainMenu = [[NSMenu alloc] initWithTitle:name];
+  //   for (Config::MenuItem subMenu : mainMenu.children_) {
+  //     auto name = [NSString stringWithUTF8String:subMenu.name_.c_str()];
+  //     auto key = [NSString stringWithUTF8String:subMenu.key_.c_str()];
+  //     auto menuItem =
+  //         [[NSMenuItem alloc] initWithTitle:name
+  //                                    action:@selector(selector_item:)
+  //                             keyEquivalent:@""];
+  //     [menuItem setTarget:menu_selector];
+  //     [nsmainMenu addItem:menuItem];
   //   }
-  //   [nsmenuItem setSubmenu:subMenu];
 
-  //   // [nsmenuItem setEnabled:TRUE];
-  //   // [nsmenuItem setHidden:FALSE];
-  //   [mainMenu insertItem:nsmenuItem atIndex:index];
-  //   index++;
+  //   // 装载菜单项
+  //   [navigation_bar setSubmenu:nsmainMenu
+  //                      forItem:[navigation_bar itemWithTitle:name]];
   // }
-
-  std::cout << "装载菜单：1" << std::endl;
-  auto nsmenuItem = [[NSMenuItem alloc] initWithTitle:@"hahaha"
-                                               action:nil
-                                        keyEquivalent:@"A"];
-
-  std::cout << "装载菜单：2" << std::endl;
-  [nsmenuItem setTitle:@"hahah"];
-  [mainMenu addItem:nsmenuItem];
-
-  std::cout << "装载菜单：3 二级" << std::endl;
-  auto subMenu = [[NSMenu alloc] initWithTitle:@"hahaha"];
-  [subMenu addItemWithTitle:@"haha1" action:nil keyEquivalent:@"Aa"];
-  [subMenu addItemWithTitle:@"haha2" action:nil keyEquivalent:@"Ab"];
-  [subMenu addItemWithTitle:@"haha3" action:nil keyEquivalent:@"Ac"];
-
-  NSLog(@"hahah menu %@ - %@", mainMenu, [mainMenu itemArray]);
-
-  std::cout << "装载菜单：4" << std::endl;
-  [NSApp setMainMenu:mainMenu];
+  std::cout << "装载导航栏" << std::endl;
+  [NSApp setMainMenu:navigation_bar];
 }
 }

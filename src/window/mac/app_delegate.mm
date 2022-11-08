@@ -115,9 +115,58 @@
   [self.webview_ loadRequest:[NSURLRequest requestWithURL:nurl]];
 }
 
+- (void)orderFrontStandardInfoPanel:(id)sender {
+  NSLog(@"orderFrontStandardInfoPanel");
+  // function details here
+}
+
+- (void)orderFrontStandardintoPanel:(id)sender {
+  NSLog(@"orderFrontStandardInfoPanel");
+  // function details here
+}
+
 // app 准备完成的时候被调用
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
   NSLog(@"applicationDidFinishLaunching");
+
+  // UW::Config::Menu menuConfig = self.config_.menu_;
+  // // auto mainMenu = [NSApp mainMenu];
+  // NSMenu *menu;
+  // NSMenu *info;
+  // NSMenu *into;
+
+  // menu = [NSMenu new];
+  // [menu addItemWithTitle:@"Info" action:NULL keyEquivalent:@""];
+  // [menu addItemWithTitle:@"into" action:NULL keyEquivalent:@"h"];
+  // [menu addItemWithTitle:@"Quit"
+  //                 action:@selector(terminate:)
+  //          keyEquivalent:@"q"];
+  // [menu setAccessibilityEnabled:YES];
+
+  // info = [NSMenu new];
+  // [info addItemWithTitle:@"Info Panel..."
+  //                 action:@selector(orderFrontStandardInfoPanel:)
+  //          keyEquivalent:@""];
+  // [info addItemWithTitle:@"Preferences" action:NULL keyEquivalent:@""];
+  // [info addItemWithTitle:@"Help"
+  //                 action:@selector(orderFrontHelpPanel:)
+  //          keyEquivalent:@"?"];
+
+  // [menu setSubmenu:info forItem:[menu itemWithTitle:@"Info"]];
+
+  // into = [[NSMenu alloc] initWithTitle:@"into"];
+  // [into addItemWithTitle:@"into Panel..."
+  //                 action:@selector(orderFrontStandardintoPanel:)
+  //          keyEquivalent:@""];
+  // [into addItemWithTitle:@"Preferences" action:NULL keyEquivalent:@""];
+  // [into addItemWithTitle:@"Help"
+  //                 action:@selector(orderFrontHelpPanel:)
+  //          keyEquivalent:@"?"];
+
+  // [menu setSubmenu:into forItem:[menu itemWithTitle:@"into"]];
+
+  // [NSApp setMainMenu:menu];
+
   [self initWindow];
   [self initWebview];
 
@@ -134,30 +183,6 @@
   NSApp.applicationIconImage = image;
 
   // Insert code here to initialize your application
-
-  // UW::Config::Menu menuConfig = self.config_.menu_;
-  // // auto mainMenu = [NSApp mainMenu];
-  // auto mainMenu = [NSApp mainMenu];
-
-  // std::cout << "装载菜单：1" << std::endl;
-  // auto nsmenuItem = [[NSMenuItem alloc] initWithTitle:@"hahaha"
-  //                                              action:nil
-  //                                       keyEquivalent:@"A"];
-
-  // std::cout << "装载菜单：2" << std::endl;
-  // [nsmenuItem setTitle:@"hahah"];
-  // [mainMenu addItem:nsmenuItem];
-
-  // std::cout << "装载菜单：3 二级" << std::endl;
-  // auto subMenu = [[NSMenu alloc] initWithTitle:@"hahaha"];
-  // [subMenu addItemWithTitle:@"haha1" action:nil keyEquivalent:@"Aa"];
-  // [subMenu addItemWithTitle:@"haha2" action:nil keyEquivalent:@"Ab"];
-  // [subMenu addItemWithTitle:@"haha3" action:nil keyEquivalent:@"Ac"];
-
-  // NSLog(@"hahah menu %@ - %@", mainMenu, [mainMenu itemArray]);
-
-  // std::cout << "装载菜单：4" << std::endl;
-  // [NSApp setMainMenu:mainMenu];
 
   self.platform_->app_.bus.emit("applicationDidFinishLaunching",
                                 UW::Bus::Message{});

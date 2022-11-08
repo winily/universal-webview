@@ -1,3 +1,5 @@
+import eventBus from "./eventBus"
+
 const SYSTEM_EVENT = 'system::event'
 
 export const execute = (key, data) => {
@@ -14,10 +16,10 @@ export const Clipboard = {
   write: (data, format = FORMAT_PLAIN_TEXT) => execute("clipboard::write", { format, data }),
 }
 
-
 export default {
   FORMAT_PLAIN_TEXT,
   FORMAT_FILE_URL,
   Clipboard,
-  execute
+  execute,
+  eventBus
 }

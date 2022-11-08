@@ -42,6 +42,7 @@ void Platform::load(std::string url) {
 }
 
 void Platform::run() {
+  initMenu();
   // run
   [NSApp run];
 }

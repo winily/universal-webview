@@ -18,6 +18,34 @@ universal-webview（接下来简称 UW）
 
 - WebView
 - Clipboard
+- 导航菜单
+  > 在 uw.config.json 中配置，然后会触发 js 事件通知到 webview
+  >
+  > 配置例子
+  >
+  > ```json
+  > {
+  >   "menu": {
+  >     "navigation": [
+  >       {
+  >        "name": "uw",
+  >        "children": [ { "name": "about", "key": "about" } ]
+  >       },
+  >       {
+  >         "name": "Window",
+  >         "children": [
+  >          {
+  >            "name": "Minimize",
+  >            "children": [{
+  >               "name": "第三级",
+  >               "children": [ { "name": "第四级", "key": "a44" } ]
+  >             }]
+  >           }
+  >        },
+  >      ]
+  >   }
+  > }
+  > ```
 - 资源本地化
   > 自定义了协议头，让制定写法的 URL 被内部代码拦截，访问到本地资源
   >

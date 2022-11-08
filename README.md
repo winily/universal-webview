@@ -18,6 +18,34 @@ All are different standards and may have subtle differences on Web APIs.
 
 - WebView
 - Clipboard
+- Navigation Menu
+  > Configure in uw.config.json, then trigger js event notification to webview
+  >
+  > Configuration example
+  >
+  > ```json
+  > {
+  >   "menu": {
+  >     "navigation": [
+  >       {
+  >        "name": "uw",
+  >        "children": [ { "name": "about", "key": "about" } ]
+  >       },
+  >       {
+  >         "name": "Window",
+  >         "children": [
+  >          {
+  >            "name": "Minimize",
+  >            "children": [{
+  >               "name": "第三级",
+  >               "children": [ { "name": "第四级", "key": "a44" } ]
+  >             }]
+  >           }
+  >        },
+  >      ]
+  >   }
+  > }
+  > ```
 - Resource localization
   > Customized the protocol header, so that the URL of the formulation can be intercepted by the internal code, and the local resources can be accessed
   >
@@ -43,7 +71,6 @@ All are different standards and may have subtle differences on Web APIs.
 #### MacOS
 
 - fs
-- menu
 
 #### Windows
 

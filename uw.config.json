@@ -9,25 +9,50 @@
     "navigation": [
       {
         "name": "uw",
-        "key": "uw",
         "children": [
           {
-            "key": "uw-about",
-            "name": "about"
+            "name": "about",
+            "key": "about"
           },
           {
-            "key": "exit",
-            "name": "退出 UW"
+            "name": "退出 UW",
+            "key": "exit"
+          }
+        ]
+      },
+      {
+        "name": "Window",
+        "children": [
+          {
+            "name": "Minimize",
+            "children": [
+              {
+                "name": "第三级",
+                "children": [
+                  {
+                    "name": "第四级",
+                    "key": "a44"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Zoom",
+            "key": "zoom"
+          },
+          {
+            "name": "移动到“LU28R55”",
+            "key": "move"
           }
         ]
       },
       {
         "name": "Help",
-        "key": "Help",
         "children": [
           {
-            "key": "Get Start",
-            "name": "GetStart"
+            "name": "GetStart",
+            "key": "getstart"
           }
         ]
       }
