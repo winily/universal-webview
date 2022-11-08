@@ -9,7 +9,6 @@ public:
   Window() = default;
   Window(Json::Value window) {
     title_ = window["title"].asString();
-    icon_path_ = window["icon_path"].asString();
 
     resizable_ = window.get("resizable", true).asBool();
     closable_ = window.get("closable", true).asBool();
@@ -24,7 +23,6 @@ public:
   }
 
   std::string title_;
-  std::string icon_path_;
 
   bool resizable_{true};
   bool closable_{true};

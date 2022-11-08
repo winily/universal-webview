@@ -8,9 +8,6 @@ file(GLOB OC_SYSTEM_EVENT_SOUYCES_PATH ${CMAKE_CURRENT_LIST_DIR}/system_event/*.
 set(
   SOUYCES_PATH 
     ${OC_ROOT_SOUYCES_PATH}
-    # ${CMAKE_CURRENT_LIST_DIR}/window.mm
-    # ${CMAKE_CURRENT_LIST_DIR}/message_handler.mm
-    # ${CMAKE_CURRENT_LIST_DIR}/scheme_handler.mm
     ${OC_SYSTEM_EVENT_SOUYCES_PATH}
   )
 

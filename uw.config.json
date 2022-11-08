@@ -1,7 +1,7 @@
 {
+  "icon_path": "resource/logo192.png",
   "window": {
     "title": "第一窗口",
-    "icon_path": "/Users/winily/Downloads/icon.png",
     "width": 1200,
     "height": 750
   },
@@ -18,6 +18,16 @@
           {
             "key": "exit",
             "name": "退出 UW"
+          }
+        ]
+      },
+      {
+        "name": "Help",
+        "key": "Help",
+        "children": [
+          {
+            "key": "Get Start",
+            "name": "GetStart"
           }
         ]
       }

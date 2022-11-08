@@ -20,17 +20,7 @@ int main() {
   Json::Value root;
   config_doc >> root;
   Config::Config config(root);
-  // auto menu = app_config["menu"].as<Config::MenuConfig>();
-  std::cout << "解析 json" << std::endl;
-
   // TODO 读配置文件启动
-
-  // return 1;
-  // Window::WindowConfig config{};
-  // config.title = "第一窗口";
-  // config.icon_path = "/Users/winily/Downloads/icon.png";
-  // config.width = 1200;
-  // config.height = 750;
   auto app = App::Application();
   Window::Window window(config, app);
   // window.open("http://localhost:3000/");

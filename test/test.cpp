@@ -15,7 +15,7 @@ TEST_CASE("test") {
   std::cout << "hello world" << std::endl;
   UW::Config::Config config{};
   config.window_.title_ = "第一窗口";
-  config.window_.icon_path_ = "/Users/winily/Downloads/icon.png";
+  config.icon_path_ = "/Users/winily/Downloads/icon.png";
   config.window_.width_ = 1200;
   config.window_.height_ = 750;
   auto app = App::Application();
