@@ -25,26 +25,29 @@ All are different standards and may have subtle differences on Web APIs.
   >
   > ```json
   > {
-  >   "menu": {
-  >     "navigation": [
-  >       {
-  >        "name": "uw",
-  >        "children": [ { "name": "about", "key": "about" } ]
-  >       },
-  >       {
-  >         "name": "Window",
-  >         "children": [
-  >          {
-  >            "name": "Minimize",
-  >            "children": [{
-  >               "name": "第三级",
-  >               "children": [ { "name": "第四级", "key": "a44" } ]
-  >             }]
-  >           }
-  >          ]
-  >        }
-  >      ]
-  >   }
+  > 	"menu": {
+  > 		"navigation": [{
+  > 				"name": "uw",
+  > 				"children": [{
+  > 					"name": "about",
+  > 					"key": "about"
+  > 				}]
+  > 			},
+  > 			{
+  > 				"name": "Window",
+  > 				"children": [{
+  > 					"name": "Minimize",
+  > 					"children": [{
+  > 						"name": "第三级",
+  > 						"children": [{
+  > 							"name": "第四级",
+  > 							"key": "a44"
+  > 						}]
+  > 					}]
+  > 				}]
+  > 			}
+  > 		]
+  > 	}
   > }
   > ```
 - Resource localization
