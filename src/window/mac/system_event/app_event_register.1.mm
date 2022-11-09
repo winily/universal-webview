@@ -2,6 +2,7 @@
 
 #include "system_event.h"
 
+#include <iostream>
 namespace UW::Window::Event {
 NSDictionary *app_terminate() {
   [NSApp terminate:nil];

@@ -14,7 +14,6 @@
 #import "scheme_handler.h"
 
 #include "../config/config.hpp"
-#include "../sys/sys.hpp"
 #include "window.hpp"
 
 #include "iostream"
@@ -43,7 +42,6 @@ void Platform::load(std::string url) {
 
 void Platform::run() {
   initMenu();
-  // run
   [NSApp run];
 }
 }

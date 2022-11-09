@@ -28,7 +28,6 @@
 }
 
 - (void)initWindow {
-  NSLog(@"构建了窗口");
   @autoreleasepool {
     auto window_config = self.config_.window_;
     // Create the main window
@@ -68,10 +67,8 @@
 }
 
 - (void)initWebview {
-  NSLog(@"构建了 Webview");
   @autoreleasepool {
     auto window_config = self.config_.window_;
-    // NSRect screenSize = NSScreen.mainScreen.frame;
     NSRect targetRect =
         CGRectMake(0, 0, window_config.width_, window_config.height_);
     auto schemeHandler = [[SchemeHandler alloc] init];
@@ -115,58 +112,8 @@
   [self.webview_ loadRequest:[NSURLRequest requestWithURL:nurl]];
 }
 
-- (void)orderFrontStandardInfoPanel:(id)sender {
-  NSLog(@"orderFrontStandardInfoPanel");
-  // function details here
-}
-
-- (void)orderFrontStandardintoPanel:(id)sender {
-  NSLog(@"orderFrontStandardInfoPanel");
-  // function details here
-}
-
 // app 准备完成的时候被调用
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-  NSLog(@"applicationDidFinishLaunching");
-
-  // UW::Config::Menu menuConfig = self.config_.menu_;
-  // // auto mainMenu = [NSApp mainMenu];
-  // NSMenu *menu;
-  // NSMenu *info;
-  // NSMenu *into;
-
-  // menu = [NSMenu new];
-  // [menu addItemWithTitle:@"Info" action:NULL keyEquivalent:@""];
-  // [menu addItemWithTitle:@"into" action:NULL keyEquivalent:@"h"];
-  // [menu addItemWithTitle:@"Quit"
-  //                 action:@selector(terminate:)
-  //          keyEquivalent:@"q"];
-  // [menu setAccessibilityEnabled:YES];
-
-  // info = [NSMenu new];
-  // [info addItemWithTitle:@"Info Panel..."
-  //                 action:@selector(orderFrontStandardInfoPanel:)
-  //          keyEquivalent:@""];
-  // [info addItemWithTitle:@"Preferences" action:NULL keyEquivalent:@""];
-  // [info addItemWithTitle:@"Help"
-  //                 action:@selector(orderFrontHelpPanel:)
-  //          keyEquivalent:@"?"];
-
-  // [menu setSubmenu:info forItem:[menu itemWithTitle:@"Info"]];
-
-  // into = [[NSMenu alloc] initWithTitle:@"into"];
-  // [into addItemWithTitle:@"into Panel..."
-  //                 action:@selector(orderFrontStandardintoPanel:)
-  //          keyEquivalent:@""];
-  // [into addItemWithTitle:@"Preferences" action:NULL keyEquivalent:@""];
-  // [into addItemWithTitle:@"Help"
-  //                 action:@selector(orderFrontHelpPanel:)
-  //          keyEquivalent:@"?"];
-
-  // [menu setSubmenu:into forItem:[menu itemWithTitle:@"into"]];
-
-  // [NSApp setMainMenu:menu];
-
   [self initWindow];
   [self initWebview];
 

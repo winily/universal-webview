@@ -1,10 +1,6 @@
 #pragma once
 
-// #include <Foundation/Foundation.h>
-
-#include "../sys/clipboard/clipboard.hpp"
-#include "../sys/clipboard/clipboard_event.hpp"
-
+#include "../sys_api/clipboard/clipboard.hpp"
 #include "system_event.h"
 #include <map>
 #include <string>

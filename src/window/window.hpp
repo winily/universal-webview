@@ -24,9 +24,6 @@ public:
   void open(std::string url) {
     app_.bus.on("applicationDidFinishLaunching",
                 [this, url](Bus::Message message) -> Bus::Message {
-                  std::cout
-                      << "Message BUS applicationDidFinishLaunching 事件通知"
-                      << std::endl;
                   platform_->load(url);
                   return Bus::Message{};
                 });

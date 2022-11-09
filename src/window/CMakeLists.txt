@@ -7,7 +7,6 @@ endif()
 
 message(STATUS ${SOUYCES_PATH})
 
-# file(GLOB SOUYCES_PATH ${CMAKE_CURRENT_LIST_DIR}/*.hpp)
 target_sources(window
   PRIVATE
     ${SOUYCES_PATH}
@@ -20,6 +19,3 @@ target_include_directories(window
 PUBLIC
   ${CMAKE_CURRENT_LIST_DIR}
 )
-
-# add_executable(webview-test main.cpp)
-target_link_libraries(window sys)

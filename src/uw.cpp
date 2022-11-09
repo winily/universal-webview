@@ -14,12 +14,18 @@
 using namespace UW;
 
 int main(int argc, char *argv[]) {
-  std::cout << argv[1] << std::endl;
+  // std::cout << argv[1] << std::endl;
   auto current_path = std::filesystem::current_path();
 
-  std::filesystem::path path = "";
-  path /= current_path;
-  path /= argv[1];
+  std::filesystem::path path =
+      "/Users/winily/Projects/Open-Source/super-clipboard/"
+      "universal-webview/uw.config.json";
+  // path /= current_path;
+  // if (argc > 1) {
+  //   path /= argv[1];
+  // } else {
+  //   path /= "../uw.config.json";
+  // }
   std::ifstream config_doc(path, std::ifstream::binary);
   Json::Value root;
   config_doc >> root;

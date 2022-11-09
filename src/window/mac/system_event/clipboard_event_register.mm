@@ -3,7 +3,6 @@
 #include <_types/_uint32_t.h>
 #include <_types/_uint8_t.h>
 
-#include "../sys/clipboard/clipboard.hpp"
 #include "clipboard_event_register.h"
 #include "system_event.h"
 
