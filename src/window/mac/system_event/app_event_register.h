@@ -10,5 +10,5 @@
 #include <string>
 
 namespace UW::Window::Event {
-NSDictionary *clipboardEventSelector(SystemEvent event);
+NSDictionary *appEventSelector(SystemEvent event);
 }

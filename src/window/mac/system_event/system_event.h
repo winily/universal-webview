@@ -3,7 +3,7 @@
 #include <Foundation/Foundation.h>
 #include <string>
 
-namespace UW::Window {
+namespace UW::Window::Event {
 
 NSDictionary *process_event(NSDictionary *body);
 

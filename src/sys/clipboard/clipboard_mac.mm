@@ -28,8 +28,6 @@ bool Write(std::string format_str, std::string buffer) {
   NSString *format = [NSString stringWithUTF8String:format_str.c_str()];
   NSString *data = [NSString stringWithUTF8String:buffer.c_str()];
 
-  std::cout << "Mac::Clipboard:: fromat" << [format UTF8String] << std::endl;
-
   // uint8_t *buf = buffer.bytes;
   // size_t length = buffer.length;
   // NSData *data = [NSPasteboard.generalPasteboard

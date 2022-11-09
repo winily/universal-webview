@@ -1,5 +1,4 @@
-#include "system_event_handler.h"
-
+#include "app_event_register.h"
 #include "clipboard_event_register.h"
 
 #include <Foundation/Foundation.h>
@@ -8,11 +7,7 @@
 #include <map>
 #include <string>
 
-// std::map<std::string, SystemEventHandler> SYSTEM_EVENT_TABLE();
-
-// clipboardEventRegister(SYSTEM_EVENT_TABLE);
-
-namespace UW::Window {
+namespace UW::Window::Event {
 NSDictionary *selector(SystemEvent event) {
 
   NSDictionary *result = @{};
@@ -20,11 +15,9 @@ NSDictionary *selector(SystemEvent event) {
   if ((result = clipboardEventSelector(event)) != nullptr)
     return result;
 
-  // for (const auto &[key, value] : SYSTEM_EVENT_TABLE) {
-  //   if (event.key.compare(key)) {
-  //     return value(event.data);
-  //   }
-  // }
+  if ((result = appEventSelector(event)) != nullptr)
+    return result;
+
   return result;
 }
 
@@ -32,7 +25,6 @@ NSDictionary *process_event(NSDictionary *body) {
   auto event = SystemEvent();
   event.key = [body[@"key"] UTF8String];
   event.data = body[@"data"];
-  std::cout << "进入一个事件，准备选择api运行 key:" << event.key << std::endl;
   return selector(event);
 }
 }

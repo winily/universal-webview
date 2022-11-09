@@ -1,4 +1,6 @@
 {
+  "name": "uw牛逼",
+  "version": "0.0.1",
   "icon_path": "resource/logo192.png",
   "window": {
     "title": "第一窗口",

@@ -16,10 +16,15 @@ export const Clipboard = {
   write: (data, format = FORMAT_PLAIN_TEXT) => execute("clipboard::write", { format, data }),
 }
 
+export const App = {
+  terminate: () => execute("app::terminate"),
+}
+
 export default {
   FORMAT_PLAIN_TEXT,
   FORMAT_FILE_URL,
   Clipboard,
+  App,
   execute,
   eventBus
 }

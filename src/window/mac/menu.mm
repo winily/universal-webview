@@ -23,6 +23,7 @@
       stringWithFormat:@"SystemApi.eventBus.emit('menu::%@')", menuItem.key_];
   auto _nswindow = NSApp.mainWindow;
   auto _nswebview = NSApp.mainWindow.contentView;
+  // js 通知到 webview 菜单点击事件
   [_nswebview evaluateJavaScript:js completionHandler:nil];
 }
 @end
@@ -58,37 +59,13 @@ void assemblyMenu(MenuSelector *menu_selector, NSMenu *nsmenu,
 }
 
 void Platform::initMenu() {
-  // @autoreleasepool {
-  Config::Menu menuConfig = config_.menu_;
+  @autoreleasepool {
+    Config::Menu menuConfig = config_.menu_;
+    auto navigation_bar = [[NSMenu alloc] init];
+    auto menu_selector = [[MenuSelector alloc] init];
+    assemblyMenu(menu_selector, navigation_bar, menuConfig.navigation_);
 
-  // auto mainMenu = [NSApp mainMenu];
-  auto navigation_bar = [[NSMenu alloc] init];
-  auto menu_selector = [[MenuSelector alloc] init];
-  assemblyMenu(menu_selector, navigation_bar, menuConfig.navigation_);
-
-  // for (Config::MenuItem mainMenu : menuConfig.navigation_) {
-  //   auto name = [NSString stringWithUTF8String:mainMenu.name_.c_str()];
-  //   auto key = [NSString stringWithUTF8String:mainMenu.key_.c_str()];
-  //   // 注册一个菜单项
-  //   [navigation_bar addItemWithTitle:name action:NULL keyEquivalent:@""];
-
-  //   auto nsmainMenu = [[NSMenu alloc] initWithTitle:name];
-  //   for (Config::MenuItem subMenu : mainMenu.children_) {
-  //     auto name = [NSString stringWithUTF8String:subMenu.name_.c_str()];
-  //     auto key = [NSString stringWithUTF8String:subMenu.key_.c_str()];
-  //     auto menuItem =
-  //         [[NSMenuItem alloc] initWithTitle:name
-  //                                    action:@selector(selector_item:)
-  //                             keyEquivalent:@""];
-  //     [menuItem setTarget:menu_selector];
-  //     [nsmainMenu addItem:menuItem];
-  //   }
-
-  //   // 装载菜单项
-  //   [navigation_bar setSubmenu:nsmainMenu
-  //                      forItem:[navigation_bar itemWithTitle:name]];
-  // }
-  std::cout << "装载导航栏" << std::endl;
-  [NSApp setMainMenu:navigation_bar];
+    [NSApp setMainMenu:navigation_bar];
+  }
 }
 }
