@@ -8,12 +8,8 @@
 
 #include "../container/buffer.hpp"
 #include "message.hpp"
-#include "messageHandler.hpp"
 
 namespace UW::Bus {
-
-// typedef Message std::function<Message()>;
-// typedef Message (*handler)(Message);
 
 class MessageBus {
 public:

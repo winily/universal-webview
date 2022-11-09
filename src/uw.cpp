@@ -8,15 +8,19 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <ostream>
 #include <string>
 
 using namespace UW;
 
-int main() {
+int main(int argc, char *argv[]) {
+  std::cout << argv[1] << std::endl;
   auto current_path = std::filesystem::current_path();
-  auto config_path = "/Users/winily/Projects/Open-Source/super-clipboard/"
-                     "universal-webview/uw.config.json";
-  std::ifstream config_doc(config_path, std::ifstream::binary);
+
+  std::filesystem::path path = "";
+  path /= current_path;
+  path /= argv[1];
+  std::ifstream config_doc(path, std::ifstream::binary);
   Json::Value root;
   config_doc >> root;
   Config::Config config(root);
