@@ -9,7 +9,7 @@
 #import <CoreServices/CoreServices.h>
 #import <Foundation/Foundation.h>
 
-namespace UW::Sys::Clipboard {
+namespace UW::SysApi::Clipboard {
 void Clear() { [NSPasteboard.generalPasteboard clearContents]; }
 // 读取剪贴板
 Buffer Read(std::string format) {

@@ -9,13 +9,13 @@
 #include <iostream>
 namespace UW::Window::Event {
 NSDictionary *clipboard_clear() {
-  Sys::Clipboard::Clear();
+  SysApi::Clipboard::Clear();
   return nullptr;
 }
 
 NSDictionary *clipboard_read(NSDictionary *data) {
   auto format = [data[@"format"] UTF8String];
-  auto buffer_result = Sys::Clipboard::Read(format);
+  auto buffer_result = SysApi::Clipboard::Read(format);
 
   NSString *string_result =
       [NSString stringWithCString:reinterpret_cast<char *>(buffer_result.bytes)
@@ -26,7 +26,7 @@ NSDictionary *clipboard_read(NSDictionary *data) {
 NSDictionary *clipboard_write(NSDictionary *data) {
   auto format = [data[@"format"] UTF8String];
   auto *clipdord_data = [data[@"data"] UTF8String];
-  Sys::Clipboard::Write(format, clipdord_data);
+  SysApi::Clipboard::Write(format, clipdord_data);
   return nullptr;
 }
 

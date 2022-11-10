@@ -22,11 +22,11 @@ namespace UW::Window {
 // 构造函数
 Platform::Platform(Config::Config &config, App::Application &app)
     : app_(app), config_(config) {
+  auto app_delegate = [[AppDelegate alloc] init];
   @autoreleasepool {
     // 共享 application 实例，后续使用 NSApp 调用
     [NSApplication sharedApplication];
 
-    auto app_delegate = [[AppDelegate alloc] init];
     [app_delegate setConfig:config_];
     [app_delegate setPlatform:this];
     NSApp.delegate = app_delegate;

@@ -3,4 +3,6 @@
 #include "../../container/buffer.hpp"
 #include <string>
 
-namespace UW::Sys::Notification {} // namespace UW::Sys::Notification
+namespace UW::SysApi::Notification {
+void send();
+} // namespace UW::SysApi::Notification

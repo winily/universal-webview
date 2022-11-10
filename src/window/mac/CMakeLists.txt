@@ -12,4 +12,4 @@ set(
   )
 
 target_link_libraries(window "-framework Cocoa -framework AppKit -framework CoreData")
-target_link_libraries(window "-framework Foundation -framework WebKit")
+target_link_libraries(window "-framework Foundation -framework WebKit -framework UserNotifications")

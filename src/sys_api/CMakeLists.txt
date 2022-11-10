@@ -8,6 +8,7 @@ else()
   file(GLOB ENV_SOUYCES_PATH_CPP ${CMAKE_CURRENT_LIST_DIR}/*/*_windows.cpp)
 endif()
 
+file(GLOB SOUYCES_PATH_CPP ${CMAKE_CURRENT_LIST_DIR}/*/*.cpp)
 file(GLOB SOUYCES_PATH_HPP ${CMAKE_CURRENT_LIST_DIR}/*/*.hpp)
 target_sources(sys_api
   PRIVATE

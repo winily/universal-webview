@@ -1,3 +1,4 @@
+#include "../sys_api/notification/notification.hpp"
 #include "app_event_register.h"
 #include "clipboard_event_register.h"
 
@@ -17,6 +18,8 @@ NSDictionary *selector(SystemEvent event) {
 
   if ((result = appEventSelector(event)) != nullptr)
     return result;
+
+  SysApi::Notification::send();
 
   return result;
 }
