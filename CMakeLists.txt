@@ -27,7 +27,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 # add_library(yaml-cpp)
 # 包含头文件
 include_directories(${CMAKE_CURRENT_LIST_DIR}/lib/jsoncpp-1.9.5/include)
+include_directories(/usr/local/include)
 link_directories(${CMAKE_CURRENT_LIST_DIR}/lib/jsoncpp-1.9.5/build/lib)
+link_directories(/usr/local/lib/quickjs/)
 message(STATUS "========================================")
 message(STATUS ${ROOT_PATH})
 

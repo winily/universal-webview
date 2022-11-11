@@ -17,10 +17,11 @@ target_link_libraries(universal-webview
     window
 
     jsoncpp
+    quickjs
   )
 
 add_executable(uw uw.cpp)
 
 link_libraries(jsoncpp)
 
-target_link_libraries(uw universal-webview jsoncpp)
+target_link_libraries(uw universal-webview jsoncpp quickjs)

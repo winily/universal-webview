@@ -2,6 +2,7 @@
   "name": "uw牛逼",
   "version": "0.0.1",
   "icon_path": "resource/logo192.png",
+  "main_path": "resource/backend/main.js",
   "window": {
     "title": "第一窗口",
     "width": 1200,

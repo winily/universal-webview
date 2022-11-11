@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --outfile=main.js  --target=es2020"
+  },
+  "dependencies": {
+    "esbuild": "^0.15.13"
+  }
+}
